@@ -23,33 +23,44 @@ insert into Trainees values (115,'Arun','joseph',70000,21-09-2021,'Designer'),(1
 
 insert into Trainees values (121,'hemanth','B',50000,23-01-2023,'Developer')
 
-select * from Trainees where first_name like '[J-T]%'
 
+
+--1. Retrieve all FIRST_NAME STARTING WITH J-T and should differentiate between Uppercase and lowercase.
+select * from Trainees where first_name like '[j-t]%' collate SQL_Latin1_General_cp1_cs_as
+
+
+
+--2. Retrieve all SALARY BETWEEN 20000 TO 50000
 select * from trainees where salary between 70000  and 100000
 
 
+--3. Retrieve all FIRST_NAME ending with i
 select * from trainees where first_name like '%i'
 
-select * from Trainees where first_name like '[j-t]%' collate SQL_Latin1_General_cp1_cs_as
 
+--4. Retrieve all salary without duplications
 select distinct salary from trainees
 
 
-
-
+--5. Retrieve all records whose department is Developer and Designer
 select * from trainees where department='Developer'or department='designer'
 
 
-select * from trainees where trainee_id < 107
+--6. Retrieve all Trainee_ID less than 5
+select * from trainees where trainee_id <105
 
+--7. Limit the records by retrieving the 6 to 15 records
 select * from trainees where trainee_id between 106 and 115
-
-
 select * from trainees order by trainee_id offset 0 rows fetch first 5 rows only
 
+--8. Retrieve the top 5 records with Ties
+select top 5 with ties  * from  trainees order by salary 
+select * from trainees order by trainee_id offset 5 rows fetch next 10 rows only
 
+--9. Retrieve the records in descending order based on department column.
 select  * from trainees order by department desc
 
+--10. Retrieve all  last_name with 3rd character as 'a.'
 select * from trainees where last_name like '__a%'
 
-select * from trainees order by trainee_id offset 5 rows fetch next 10 rows only
+
