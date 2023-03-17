@@ -81,7 +81,7 @@ insert into details values('harshan',50000,10000),('Karthi',70000,5000),('hari',
 
 alter table details add   Revisedsalary as (salary+increment)
 
-----b. Retrieve all the records whose salary is >20000 and move them into a new table using (SELECT INTO)
+----b. Retrieve all the records whose salary is >55000 and move them into a new table using (SELECT INTO)
 select * into employee_details from details where salary > 55000
 
 select  * from employee_details
