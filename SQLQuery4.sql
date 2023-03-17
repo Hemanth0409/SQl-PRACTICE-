@@ -60,3 +60,60 @@ insert into employee values(4,'saron','developer',101,123476743,0987654321,'465 
 select * from employee
 select * FRom department
 select * from address
+
+
+-----------------------------------------------------------------------------------------
+
+
+--demo normalization table
+
+
+create table  project_details(
+Project_code varchar(20) primary key,
+project_name varchar(25) unique not null,
+Project_manager varchar(20) unique not null,
+project_budget int unique not null,
+
+)
+
+insert into project_details values 
+('PC010','Reservation System','Mr.Ajay',120500),
+('PC011','HR system','Mrs.charu',500500),
+('PC012','Attendence system','Mr.Rajesh',710700)
+
+
+select * from project_details
+
+--Department table
+
+create table Department1 (
+Department_no varchar(20) primary key,
+Department_name varchar(20) unique not null)
+
+insert into Department1 values ('D01','IT'),
+('D02','Testing'),('D03','Database')
+
+
+
+
+--Creating main table
+
+create table Employee3
+(
+Project_code varchar(20) references project_details(Project_code),
+Employee_no varchar(20),
+Employee_name varchar(30),
+Department_no varchar(20) references Department1(Department_no),
+Hourly_Rate decimal(2,2),
+
+)
+insert into Employee3 values
+('PC010','S100','Mohan','D03',21.00),
+('PC011','S104','Jitendra','D02',17.00),
+('PC012','S109','Vikas','D01',20.60)
+
+select * from Employee3
+select * from Department1
+select * from project_details
+
+alter table employee3 alter column hourly_rate numeric (2,2)
