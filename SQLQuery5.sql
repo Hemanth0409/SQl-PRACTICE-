@@ -67,17 +67,13 @@ SELECT * FROM WORKER
 
 ------Q-1. Write an SQL query to fetch “FIRST_NAME” from Worker tableusing the alias name as <WORKER_NAME>. 
 
-
         select FIRST_NAME as WORKER_NAME from WORKER
-
-
 
 ---------Q-2. Write an SQL query to fetch “FIRST_NAME” fromWorker table in upper case. 
 
         SELECT UPPER(FIRST_NAME) FROM WORKER 
-
-
----------Q-3. Write an SQL query to fetch unique values of DEPARTMENTfrom Worker table. 
+		
+---------Q-3. Write an SQL query to fetch unique values of DEPARTMENT from Worker table. 
 
          SELECT DISTINCT DEPARTMENT FROM WORKER 
 
@@ -91,7 +87,7 @@ SELECT * FROM WORKER
 
 -----------Q-6. Write an SQL query to print the FIRST_NAME and LAST_NAME from Worker table into a single column COMPLETE_NAME. Aspacechar should separate them. 
 
-             SELECT CONCAT(CONCAT(FIRST_NAME,' '),LAST_NAME) AS COMPLETE_NAME  FROM WORKER
+             SELECT (FIRST_NAME+' '+LAST_NAME) AS COMPLETE_NAME  FROM WORKER
 
 
 ----------Q-7. Write an SQL query to print details for Workers with the first nameas “Vipul” and “Satish” from Worker table. 
