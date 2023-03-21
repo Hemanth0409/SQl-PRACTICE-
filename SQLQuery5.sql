@@ -73,7 +73,7 @@ SELECT * FROM WORKER
 
         SELECT UPPER(FIRST_NAME) FROM WORKER 
 		
----------Q-3. Write an SQL query to fetch unique values of DEPARTMENT from Worker table. 
+---------Q-3. Write an SQL query to fetch unique values of DEPARTMENTfrom Worker table. 
 
          SELECT DISTINCT DEPARTMENT FROM WORKER 
 
@@ -83,11 +83,12 @@ SELECT * FROM WORKER
 
 -----------Q-5. Write an SQL query that fetches the unique values of DEPARTMENT from Worker table and prints its length.
 
+
           SELECT DISTINCT DEPARTMENT,LEN(DEPARTMENT) AS LENGTH_DEPARTMENT FROM WORKER
 
 -----------Q-6. Write an SQL query to print the FIRST_NAME and LAST_NAME from Worker table into a single column COMPLETE_NAME. Aspacechar should separate them. 
 
-             SELECT (FIRST_NAME+' '+LAST_NAME) AS COMPLETE_NAME  FROM WORKER
+             SELECT CONCAT(FIRST_NAME,'  ',LAST_NAME) AS COMPLETE_NAME  FROM WORKER
 
 
 ----------Q-7. Write an SQL query to print details for Workers with the first nameas “Vipul” and “Satish” from Worker table. 
@@ -107,3 +108,5 @@ SELECT * FROM WORKER
 -----------Q-10. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
 
            SELECT * FROM WORKER WHERE FIRST_NAME LIKE'%A%'
+
+		   
