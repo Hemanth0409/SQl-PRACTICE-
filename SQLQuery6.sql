@@ -55,8 +55,35 @@ select * from Trainees1
 
 --7. Show the working of IIF and CASE for the above table.
 select  first_name,salary,iif(salary>300000,'senior developer','developer') as positon_details from trainees
+select first_name,salary ,case when salary>300000 then 'senior developer'when salary >70000 then 'developer'else 'Trainee'
+end as designation from trainees
+
+--8. Show the working of Sequence. 
+create sequence trainee_seq
+as int 
+start with 1
+increment by 2
 
 
---8. Show the working of Sequence.
+select  * from sys.sequences where name='trainee_seq';
+
 --9. Show the working of creation of Synonym for a table in DB1 from DB2.
+create synonym train for  demo.dbo.address
+
 --10. Show the working of IDENTITY_INSERT.
+CREATE TABLE trainees2
+    (
+        id INT PRIMARY KEY IDENTITY(1, 1) ,
+        name VARCHAR(50) ,
+        department VARCHAR(150)
+    );
+	SET IDENTITY_INSERT trainees2 ON;
+GO  
+INSERT INTO trainees2 ( id ,
+                       name ,
+                       department )
+VALUES ( 3, 'Hemanth', 'developer' );
+
+SET IDENTITY_INSERT trainees2 OFF;
+
+select * from trainees2
