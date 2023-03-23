@@ -80,6 +80,7 @@ truncate table employee
 --on update set defatul checking
 insert into employee (eid,ename) values (9,'david')
 
-
+update manager set id=105 where id =104
 select * from Manager
-select * from Employee
+select * from Employee   
+
