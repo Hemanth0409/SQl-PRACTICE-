@@ -47,7 +47,7 @@ select  c.Cust_name as Customer_name,sm.city,sm.name as Salesman,sm.commission f
 
 --3.From the above tables write a SQL query to find the details of an order. Return ord_no, ord_date, purch_amt, Customer Name, grade, Salesman, commission.
 
-select o.ord_no,o.ord_date,o.purch_amt,c.Cust_name as customer_name,c.grade,sm.name as SalesMan,sm.commission from Salesman as sm inner join Customer as c on sm.Salseman_id=c.salesman_id inner join Orders as o on  c.customer_id=o.customer_id
+select ord_no,ord_date,purch_amt,Cust_name,grade,name,commission from salesman as sm inner join customer as c on sm.salseman_id=c.salesman_id inner join Orders as o on c.customer_id=o.customer_id
 
 --4.From the above tables write a SQL query to find those orders where the order amount exists between 500 and 2000. Return ord_no, purch_amt, cust_name, city.
 

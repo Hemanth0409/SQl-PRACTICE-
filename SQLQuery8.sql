@@ -31,3 +31,55 @@ select *  ,Rank() over(order by score desc) as RANK_Order from Student_details
 
 --5. Apply Dense_Rank() for students in each department based on score.
 select * ,DENSE_RANK() over(partition by Departmant order by Score desc ) as DEPARTMENT_RANK from Student_details 
+
+---------------------------------------------------------------------------------------------------------------------------------------
+use task7
+drop table employee
+--b. Create 2 tables Manager(id(pk), name) and Employee(eid(pk),ename,mid(fk), department).
+
+Create table Manager (id int primary key,name varchar(25))
+create table Employee(eid int primary key, ename varchar (25),mid int references manager(id)) 
+
+insert into Manager values(101,'Karthi'),(102,'Harshan'),(103,'Hari'),(104,'siva')
+
+insert into Employee  values (1,'Venkit',101),(2,'Dhana',104),(3,'vasanth',103),(4,'sharon',104),(5,'vikram',104),(6,'selva',102),(7,'srikanth',101),(8,'Dhana',104)
+
+select * from Manager
+select * from Employee
+--1. Create a complex view by retrieving the records from Manager and Employee table.
+
+create view view_table
+as 
+select m.id,m.name,e.eid,e.ename from Manager as m inner join Employee as e on m.id=e.mid
+
+select * from view_table
+drop view view_table
+--2. Show the working of 'on delete cascade on update set default' for the above tables
+
+alter table Employee drop constraint [FK__Employee__mid__6477ECF3]--removing the foriegn key
+
+alter table employee drop column mid
+
+
+
+--performing the on delete cascade on update set default
+alter table Employee add  mid int default 101 constraint FK__Employee__mid_del_cas_update_default foreign key (mid) references manager(id)on delete cascade on update set default 
+
+delete from Manager where  id=101
+update Manager set  id=101 where id=103
+update manager set name='karthi' where id = 103
+insert into manager values(103,'siva')
+
+
+
+
+
+--truncation the table
+truncate table employee
+
+--on update set defatul checking
+insert into employee (eid,ename) values (9,'david')
+
+
+select * from Manager
+select * from Employee
