@@ -69,8 +69,28 @@ print @student_count
 --6. Show the working of Merge Statement by creating a backup for the students details of only students in Sem 1.
 --Note: Update few values in students details so that you can see the working of UPDATE.
 
+create table Student_details2(Student_id int,Student_name varchar(30),semester varchar(25),securedmarks int,totalmark int)
+insert into Student_details2 values(1,'Hari','Sem 1',499,500),(2,'Harshan','Sem 1',490,500),(3,'Karthi','Sem 1',480,500),(4,'Siva','Sem 1',485,500)
 
-select * into student_details_backup from Student_details ;
 
-select * from Student_details 
+select * into student_details_backup from Student_details2;
+
+select * from Student_details2 
  select * from student_details_backup
+
+ update Student_details2 set Student_name='Venkit' where Student_id=1
+ delete from student_details_backup where Student_id=4
+
+
+ merge Student_details_backup sdb using student_details2 sd
+on (sdb.student_id=sd.student_id)
+when matched then update set
+sdb.student_name=sd.student_name,
+sdb.semester=sd.semester,
+sdb.securedmarks=sd.securedmarks,
+sdb.totalmark=sd.totalmark 
+when not matched
+then insert (student_id,student_name,semester,securedmarks,totalmark )
+values(sd.student_id,sd.student_name,sd.semester,sd.securedmarks,sd.totalmark)
+when not matched by source
+then delete;
