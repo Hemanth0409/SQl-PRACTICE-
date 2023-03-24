@@ -70,19 +70,20 @@ print @student_count
 --Note: Update few values in students details so that you can see the working of UPDATE.
 
 create table Student_details2(Student_id int,Student_name varchar(30),semester varchar(25),securedmarks int,totalmark int)
-insert into Student_details2 values(1,'Hari','Sem 1',499,500),(2,'Harshan','Sem 1',490,500),(3,'Karthi','Sem 1',480,500),(4,'Siva','Sem 1',485,500)
+insert into Student_details2 values(1,'Hari','Sem 1',499,500),(2,'Harshan','Sem 3',490,500),(3,'Karthi','Sem 2',480,500),(4,'Siva','Sem 1',485,500)
 
+drop table student_details_backup
 
-select * into student_details_backup from Student_details2;
+select * into student_details_backup from Student_details2 where securedmarks>485;
 
 select * from Student_details2 
  select * from student_details_backup
 
- update Student_details2 set Student_name='Venkit' where Student_id=1
- delete from student_details_backup where Student_id=4
+ update student_details_backup set Student_name='Venkit' where Student_id=1
 
 
- merge Student_details_backup sdb using student_details2 sd
+
+ merge Student_details_backup as sdb using (select * from student_details2  where semester = 'sem 1') as sd
 on (sdb.student_id=sd.student_id)
 when matched then update set
 sdb.student_name=sd.student_name,
