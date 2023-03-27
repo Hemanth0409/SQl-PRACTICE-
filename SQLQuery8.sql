@@ -21,7 +21,9 @@ CREATE NONCLUSTERED INDEX noncluster_Department ON Student_details (Departmant a
 
 --3. Create a view for students in BCA department.
 
-create view Depatment_BCA as Select * from Student_details where Departmant = 'BCA'
+create view Depatment_BCA 
+as 
+Select * from Student_details where Departmant = 'BCA'
 
 select * from Depatment_BCA
 
@@ -30,6 +32,7 @@ select * from Depatment_BCA
 select *  ,Rank() over(order by score desc) as RANK_Order from Student_details
 
 --5. Apply Dense_Rank() for students in each department based on score.
+
 select * ,DENSE_RANK() over(partition by Departmant order by Score desc ) as DEPARTMENT_RANK from Student_details 
 
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -63,14 +66,14 @@ alter table employee drop column mid
 
 
 --performing the on delete cascade on update set default
-alter table Employee add  mid int default 101 constraint FK__Employee__mid_del_cas_update_default foreign key (mid) references manager(id)on delete cascade on update set default 
+alter table Employee add  mid int default 101 constraint FK__Employee__mid_del_cas_update_default
+foreign key (mid) references manager(id)
+on delete cascade on update set default 
 
 delete from Manager where  id=101
 update Manager set  id=101 where id=103
 update manager set name='karthi' where id = 103
 insert into manager values(103,'siva')
-
-
 
 
 

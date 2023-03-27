@@ -95,3 +95,11 @@ then insert (student_id,student_name,semester,securedmarks,totalmark )
 values(sd.student_id,sd.student_name,sd.semester,sd.securedmarks,sd.totalmark)
 when not matched by source
 then delete;
+
+exec #temp_local
+
+exec ##temp_global
+
+select * from #temp_table_local
+
+select * from ##temp_table_global
