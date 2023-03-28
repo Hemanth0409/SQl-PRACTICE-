@@ -49,4 +49,4 @@ select FIRST_NAME,LAST_NAME,EMPLOYEE_ID,SALARY from employees where FIRST_NAME i
 
 --5. Write a SQL query to find those employees whose salary falls within the range of the smallest salary and 2500. Return all the fields.
 
-select * from employees where SALARY between (select min(salary) from employees) and  80000
+select * from employees where SALARY between (select min(salary) from employees) and  (select AVG(SALARY) from employees)
