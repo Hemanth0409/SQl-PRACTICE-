@@ -95,7 +95,9 @@ then insert (student_id,student_name,semester,securedmarks,totalmark )
 values(sd.student_id,sd.student_name,sd.semester,sd.securedmarks,sd.totalmark)
 when not matched by source
 then delete;
+-----------------------------------------------------------------------------------
 
+--temp table and procedure checking
 exec #temp_local
 
 exec ##temp_global
@@ -103,3 +105,12 @@ exec ##temp_global
 select * from #temp_table_local
 
 select * from ##temp_table_global
+
+
+exec Sp_studentname_global  @@Student_name='Hari'
+print @@global_variable
+
+
+declare @@class_total int
+exec SP_studentname_global @@class_total output
+print @@class_total
