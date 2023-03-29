@@ -4,7 +4,10 @@ use task10
 
 --Create a table for employees (EMPLOYEE_ID , FIRST_NAME , LAST_NAME , EMAIL , PHONE_NUMBER , HIRE_DATE , JOB_ID , SALARY) with 20 records (Include 20 trainees in our training session)
 
-create table employees(EMPLOYEE_ID int, FIRST_NAME  varchar(20), LAST_NAME varchar(20), EMAIL VArchar(20) , PHONE_NUMBER bigint , HIRE_DATE date , JOB_ID int, SALARY int)
+create table employees
+
+
+(EMPLOYEE_ID int, FIRST_NAME  varchar(20), LAST_NAME varchar(20), EMAIL VArchar(20) , PHONE_NUMBER bigint , HIRE_DATE date , JOB_ID int, SALARY int)
 
 
 insert into employees values 
