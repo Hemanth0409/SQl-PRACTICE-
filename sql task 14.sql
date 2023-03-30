@@ -82,7 +82,7 @@ GO
 exec sp_error_db 7,'playing cricket'
 
 select * from Errors_details
-
+--------------------------------------------------------------------------
 
 /*b. Create a procedure to accept 2 numbers, if the numbers are equal then calculate the product 
 else use RAISERROR to show the working of exception handling.*/
@@ -110,7 +110,7 @@ exec Product_num 5,5--correct number formate
 
 exec Product_num 1,10--error number formate
 
-
+-------------------------------------------------------------------------------
 /*c. Create a table Friends(id(identity), name (uk)) and insert records into the table using
 a stored procedure.
 Note: insert the names which start only with A,D,H,K,P,R,S,T,V,Y ELSE using THROW give the 
