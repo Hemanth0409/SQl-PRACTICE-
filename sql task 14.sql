@@ -59,7 +59,7 @@ CREATE TABLE Errors_details
           ErrorMessage   VARCHAR(MAX),
           ErrorDateTime  DATETIME)
 
-create PROCEDURE sp_error_db (@hobbyId int,@HobbyName varchar(25))
+alter PROCEDURE sp_error_db (@hobbyId int,@HobbyName varchar(25))
 AS
   BEGIN TRY
     INSERT INTO hobbies
@@ -77,9 +77,8 @@ AS
    ERROR_MESSAGE(),
    GETDATE());
   END CATCH
-GO
 
-exec sp_error_db 7,'playing cricket'
+exec sp_error_db 8,'playing cricket'
 
 select * from Errors_details
 --------------------------------------------------------------------------
@@ -124,7 +123,7 @@ begin
 if (@name like '[ADHKPRSTVY]%')
 insert into friends values(@name)
 else
-Print 'The  Name should starts with A,D,H,K,P,R,S,T,V,Y '
+throw 50001,'The  Name should starts with A,D,H,K,P,R,S,T,V,Y ',1
 end
 
 exec Sp_friends 'Hemanth'
