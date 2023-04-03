@@ -34,13 +34,34 @@ insert into Student_details values('Grandpa max','Bcs -it',480)
 SELECT 
     @@TRANCOUNT AS After_OpenTransactions
 SET IMPLICIT_TRANSACTIONS OFF
-
+-------------------------------------------------------------------------
 --3. Explicit transactions
    --a. Only Commit - insert statement
   begin tran
   insert into Student_details values ('Vilgax','bsc-ct',477)
-  select @@ 
-
-
+  select * from student_details
+  select @@trancount as no_of_transactoins
+  COMMIT TRAN 
+SELECT @@TRANCOUNT AS OpenTransactions
+-------------------------------------------------------------------------
     --b. Only Rollback - update statement
+
+	begin transaction 
+	update Student_details set score=499 where student_id=10
+	select @@TRANCOUNT as no_of_tranction
+
+	--retriving the table
+	select * from Student_details
+---------------------------------------------------------------------------
     --c. Savepoint - commit update and insert statements, rollback delete statement
+	begin tran
+	delete from Student_details where student_id=33
+	SAVE tran A
+	update Student_details set score=499 where student_id=11
+    insert into Student_details values ('Ben 10000','bsc-it',487)
+	select * from Student_details
+	select @@trancount as no_of_transactoins
+	rollback tran a
+	commit
+	
+	select * from Student_details
