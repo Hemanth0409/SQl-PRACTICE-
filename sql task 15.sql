@@ -42,14 +42,15 @@ SET IMPLICIT_TRANSACTIONS OFF
   select * from student_details
   select @@trancount as no_of_transactoins
   COMMIT TRAN 
-SELECT @@TRANCOUNT AS OpenTransactions
+  SELECT @@TRANCOUNT AS OpenTransactions
 -------------------------------------------------------------------------
     --b. Only Rollback - update statement
-
 	begin transaction 
 	update Student_details set score=499 where student_id=10
 	select @@TRANCOUNT as no_of_tranction
 
+	--rollback event
+	rollback transaction
 	--retriving the table
 	select * from Student_details
 ---------------------------------------------------------------------------
