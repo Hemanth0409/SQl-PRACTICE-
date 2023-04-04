@@ -56,10 +56,10 @@ SET IMPLICIT_TRANSACTIONS OFF
 ---------------------------------------------------------------------------
     --c. Savepoint - commit update and insert statements, rollback delete statement
 	begin tran
-	delete from Student_details where student_id=33
+	update Student_details set score=499 where student_id=12
+    insert into Student_details values ('grey matrix','bsc-it',497)
 	SAVE tran A
-	update Student_details set score=499 where student_id=11
-    insert into Student_details values ('Ben 10000','bsc-it',487)
+	delete from Student_details where student_id=33
 	select * from Student_details
 	select @@trancount as no_of_transactoins
 	rollback tran a
